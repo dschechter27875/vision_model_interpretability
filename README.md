@@ -144,12 +144,10 @@ README.md
 # Running Locally
 
 Install dependencies:
-
-pip install -r requirements.txt
+ - pip install -r requirements.txt
 
 Run the web app:
-
-python app.py
+ - python app.py
 
 Then open the Gradio interface in your browser to upload images and visualize model explanations.
 
