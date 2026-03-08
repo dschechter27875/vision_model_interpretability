@@ -160,7 +160,7 @@ MIT Class of 2030
 
 Interested in **machine learning, AI interpretability, and computer vision**.
 
-GitHub: https://github.com/dschechter27
+GitHub: https://github.com/dschechter27875
 
 ---
 
