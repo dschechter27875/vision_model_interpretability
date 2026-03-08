@@ -53,25 +53,38 @@ Model prediction: **sports car**
 Grad-CAM focuses on the **car body and wheels**, confirming that the model is identifying relevant vehicle features.
 
 ---
+## How Grad-CAM Works
 
-# How Grad-CAM Works
+Grad-CAM explains CNN predictions by analyzing the **gradient of the predicted class score with respect to convolutional feature maps**.
 
-Grad-CAM explains CNN predictions by analyzing the **gradient of the target class score with respect to convolutional feature maps**.
+```mermaid
+flowchart LR
 
-The importance weight for each feature map is computed as:
+A[Input Image] --> B[ResNet-18 CNN]
 
-α_k = average( ∂y / ∂A_k )
+B --> C[Feature Maps A_k]
+B --> D[Class Score y]
 
-Where:
+D --> E[Backpropagation]
 
-- **A_k** = feature map *k* from the final convolutional layer  
-- **y** = score for the predicted class  
+E --> F[Gradients ∂y/∂A_k]
 
-The Grad-CAM heatmap is then computed as:
+F --> G["Compute weights  
+α_k = average( ∂y / ∂A_k )"]
 
-L_gradcam = ReLU( Σ_k α_k · A_k )
+G --> H["Weighted feature maps  
+Σ_k α_k · A_k"]
 
-This produces a visualization highlighting **which regions of the image most influenced the model’s prediction**.
+H --> I["Apply ReLU  
+L_gradcam = ReLU( Σ_k α_k · A_k )"]
+
+I --> J[Grad-CAM Heatmap]
+
+J --> K[Overlay Heatmap on Image]
+
+K --> L[Visual Explanation]
+```
+
 
 ---
 ## Model Pipeline
