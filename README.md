@@ -14,7 +14,21 @@ This project allows users to:
 The demo is deployed as an **interactive web application using Gradio** and hosted on **Hugging Face Spaces**.
 
 ---
+## Purpose
 
+Modern deep learning models often behave like black boxes, making it difficult to understand
+why a particular prediction was made.
+
+The goal of this project is to explore **model interpretability for convolutional neural networks**
+by visualizing which image regions influence predictions.
+
+Using Grad-CAM, we can trace how gradients flow through convolutional feature maps and produce
+a heatmap highlighting the parts of the image most responsible for the model's decision.
+
+This helps verify whether the model is focusing on meaningful visual features or spurious
+background patterns.
+
+---
 # Live Demo
 
 Try the interactive application here:
@@ -53,6 +67,25 @@ Model prediction: **sports car**
 Grad-CAM focuses on the **car body and wheels**, confirming that the model is identifying relevant vehicle features.
 
 ---
+## Key Insights
+
+Grad-CAM visualizations suggest that the CNN relies on localized semantic features when making
+predictions.
+
+Across several examples:
+
+• For ships, the heatmap concentrates on the hull and upper deck structure  
+• For dogs, the model focuses on the head and torso  
+• For cars, the network highlights the body and wheel regions
+
+These results indicate that the network is learning meaningful visual features rather than relying
+primarily on background artifacts.
+
+However, Grad-CAM can sometimes highlight broad regions rather than precise object boundaries,
+which reflects the spatial resolution limitations of convolutional feature maps.
+
+---
+
 ## How Grad-CAM Works
 
 Grad-CAM explains CNN predictions by analyzing the **gradient of the predicted class score with respect to convolutional feature maps**.
