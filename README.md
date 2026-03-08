@@ -74,7 +74,23 @@ L_gradcam = ReLU( Σ_k α_k · A_k )
 This produces a visualization highlighting **which regions of the image most influenced the model’s prediction**.
 
 ---
+## Model Pipeline
 
+```mermaid
+flowchart LR
+
+A[Upload Image] --> B[Image Preprocessing]
+B --> C[ResNet-18 CNN]
+C --> D[Class Prediction]
+
+D --> E[Compute Gradients]
+E --> F[Grad-CAM]
+F --> G[Heatmap Generation]
+
+G --> H[Overlay Heatmap on Image]
+H --> I[Visual Explanation]
+```
+---
 # Project Pipeline
 
 Image  
